@@ -66,9 +66,6 @@ struct HomeScreen: View {
                 }
             }
         }
-        .task {
-            await viewModel.fetchDataSFW()
-        }
     }
 }
 
