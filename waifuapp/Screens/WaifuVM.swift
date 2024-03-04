@@ -9,17 +9,30 @@ import Foundation
 
 class WaifuVM: ObservableObject {
     
-    @Published var waifus: [Waifu] = []
+    @Published var sfwWaifus: [Waifu] = []
+    @Published var nsfwWaifus: [Waifu] = []
+    
     
     // MARK: Fetch the data from URL
-    func fetchData() async {
+    func fetchDataSFW() async {
         do {
-            let fetchData = try await APIService().fetchData()
+            let fetchDataSFW = try await APIService().fetchDataSFW()
             DispatchQueue.main.async {
-                self.waifus = fetchData
+                self.sfwWaifus = fetchDataSFW
             }
         } catch {
-            print("Error fetching data: \(error.localizedDescription)")
+            print("DEUBG: Error fetching SFW data: \(error.localizedDescription)")
+        }
+    }
+    
+    func fetchDataNSFW() async {
+        do {
+            let fetchDataNSFW = try await APIService().fetchDataNSFW()
+            DispatchQueue.main.async {
+                self.nsfwWaifus = fetchDataNSFW
+            }
+        } catch {
+            print("DEBUG: Error fetching NSFW data: \(error.localizedDescription)")
         }
     }
 }
