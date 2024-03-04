@@ -6,4 +6,4 @@
 - XCode: 15.*
 - iOS: 17.*
 
-![Screenshot](screenshot.png)
+![Screenshot](screenshot-2.png)
